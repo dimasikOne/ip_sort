@@ -1,0 +1,19 @@
+language: cpp
+
+compiler: gcc
+
+before_script:
+        # create a build folder for the out-of source-build
+        - mkdir build
+        # switch to build dir
+        - cd build
+        # run cmake, that is located in top-level dir
+        - cmake ..
+
+script:
+        - make
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+curl -T ip_sort-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -udustydumb:$BINTRAY_API_KEY https://api.bintray.com/content/dustydumb/cmake_task/ip_sort/$BINTRAY_API_KEY/cmake_try-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1
