@@ -36,7 +36,7 @@ void print_ip(std::vector<std::vector<int>> temp){
 				std::cout<<".";
 			std::cout<<t[i];
 		}
-	   	std::cout<<std::endl;
+	   	std::cout<<"\n";
 	}
 }
 
